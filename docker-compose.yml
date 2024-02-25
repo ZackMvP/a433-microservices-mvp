@@ -1,0 +1,28 @@
+#Menyatakan Versi Docker Compose
+version: "3.7"
+#List services yang digunakan
+services:
+  #Service item-app
+  item-app:
+    #mengambil image
+    image: ghcr.io/zackmvp/item-app-dicodingzack/item-app:v1
+    ports:
+      #membuka port 
+      - 80:8080
+      #memastikan dijalankan setelah item-db berhasil jalan
+    depends_on:
+      - item-db
+    #restart policy
+    restart: always
+  #Service item-db
+  item-db:
+    #Mengambil image
+    image: mongo:3
+    #Memakai volume app-db dan di mounr ke /data/db 
+    volumes:
+      - app-db:/data/db
+    #restart policy
+    restart: always
+#Volume yang digunakan untuk database
+volumes:
+  app-db:

@@ -1,0 +1,2 @@
+ghcr.io/zackmvp/item-app-dicodingzack/item-app:v1
+
